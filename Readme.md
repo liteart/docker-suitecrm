@@ -26,13 +26,11 @@ Best use this image with the official docker-mysql image. This has been tested a
     1. Accept the License Agreement
     2. Enter the Database configuration and Admin User Settings.
     
-        ![alt text]("./docs/docs1.png")
+        ![Setup Assistant Step 2 Configuration Settings]("https://raw.githubusercontent.com/liteart/docker-suitecrm/master/docs/docs2.png")
         
-        Attention: Make sure the database "Host Name" is the same as defined in the container link. eg. `mysqlserver``
+        Attention: Make sure the database "Host Name" is the same as defined in the container link. eg. `mysqlserver`
         
-    3. Click next and finish the setup assistant. 
-    
-4. Done!    
+    3. Click 
 
 
 
