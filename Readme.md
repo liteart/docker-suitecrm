@@ -1,14 +1,14 @@
 Docker SuiteCRM
 ===============
 
-##About
+## About
 This is a dockerized version of the SuiteCRM open source CRM. 
 for the official github project please see here: https://github.com/salesagility/SuiteCRM
 
 This project only prepares the existing SuiteCRM version for a easy to use Docker Development Image. This image is **not intended for production use!**
 
 
-#Setup 
+## Setup 
 
 Best use this image with the official docker-mysql image. This has been tested and just works.
 
@@ -20,7 +20,7 @@ Best use this image with the official docker-mysql image. This has been tested a
 
 2. Setup SuiteCRM. Enter the port you would like to expose
     
-    `docker run -d -p 8020:80 --link mysqlserver bertschiweb/suitecrm`
+    `docker run -d -p 8020:80 --link mysqlserver --name suitecrmserver bertschiweb/suitecrm`
 
 3. Open your browser and enter the url `http://yourdockerserver:8020` 
     1. Accept the License Agreement
@@ -36,3 +36,9 @@ Best use this image with the official docker-mysql image. This has been tested a
 
 
 
+## Build Your own Image from Dockerfile
+
+1. Run Vagrant Box and connect
+2. change directorsy to `/vagrant`
+3. Build: `docker build -t suitecrm .`
+4. Run: `docker run -d -p 8020:80 --link mysqlserver --name suitecrmserver suitecrm`
