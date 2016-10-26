@@ -30,7 +30,9 @@ Best use this image with the official docker-mysql image. This has been tested a
         
         Attention: Make sure the database "Host Name" is the same as defined in the container link. eg. `mysqlserver`
         
-    3. Click 
+    3. Click next and finish the setup assistant. 
+    
+4. Done!    
 
 
 
