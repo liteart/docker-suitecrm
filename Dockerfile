@@ -1,7 +1,10 @@
 FROM php:5.6-apache
 MAINTAINER Simon Hugentobler <simon.hugentobler@bertschi.com>
 
+
+
 COPY php.custom.ini /usr/local/etc/php/conf.d/
+COPY config.php /var/www/html/
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -42,7 +45,6 @@ RUN (crontab -l 2>/dev/null; echo "*    *    *    *    *     cd /var/www/html; p
 RUN apt-get clean
 
 VOLUME /var/www/html/upload
-VOLUME /var/www/html/config.php
 
 WORKDIR /var/www/html
 EXPOSE 80
