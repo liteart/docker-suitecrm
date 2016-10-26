@@ -41,8 +41,8 @@ RUN (crontab -l 2>/dev/null; echo "*    *    *    *    *     cd /var/www/html; p
 
 RUN apt-get clean
 
-VOLUME upload
-VOLUME config.php
+VOLUME /var/www/html/upload
+VOLUME /var/www/html/config.php
 
 WORKDIR /var/www/html
 EXPOSE 80
