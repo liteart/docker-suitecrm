@@ -8,6 +8,21 @@ for the official github project please see here: https://github.com/salesagility
 This project only prepares the existing SuiteCRM version for a easy to use Docker Development Image. This image is **not intended for production use!**
 
 
+## Image on Dockerhub
+
+All Images are public available on [Dockerhub](https://hub.docker.com/r/bertschiweb/suitecrm/). 
+Image tags rely on the SuiteCRM release naming convention. To get a specific release pull the image as following:
+ 
+ `docker pull bertschiweb/suitecrm:<SuiteCRM-Release>`
+ 
+Proper Versions for example:
+- 7.7.6
+- 7.6.8
+
+For a list of all available Versions please see [Dockerhub Tags](https://hub.docker.com/r/bertschiweb/suitecrm/tags/)
+
+
+
 ## Setup 
 
 Best use this image with the official docker-mysql image. This has been tested and just works.
