@@ -25,8 +25,8 @@ Best use this image with the official docker-mysql image. This has been tested a
 3. Open your browser and enter the url `http://yourdockerserver:8020` 
     1. Accept the License Agreement
     2. Enter the Database configuration and Admin User Settings.
-    
-        ![Setup Assistant Step 2 Configuration Settings]("https://raw.githubusercontent.com/liteart/docker-suitecrm/master/docs/docs2.png")
+
+        ![Setup Assistant Step 2 Configuration Settings](https://raw.githubusercontent.com/liteart/docker-suitecrm/master/docs/docs2.png)
         
         Attention: Make sure the database "Host Name" is the same as defined in the container link. eg. `mysqlserver`
         
