@@ -54,6 +54,16 @@ Best use this image with the official docker-mysql image. This has been tested a
 ## Build Your own Image from Dockerfile
 
 1. Run Vagrant Box and connect
-2. change directorsy to `/vagrant`
+2. change directory to `/vagrant`
 3. Build: `docker build -t suitecrm .`
 4. Run: `docker run -d -p 8020:80 --link mysqlserver --name suitecrmserver suitecrm`
+
+
+## Persist SuiteCRM Installation
+
+To persist your configuration the following files have to be mounted as Volume
+
+- /upload
+- /config.php
+
+`docker run -d -p 8020:80 --link mysqlserver --name suitecrmserver -v /opt/localpath/upload:/var/www/html/upload -v /opt/localpath/upload:/var/www/html/config.php suitecrm`
