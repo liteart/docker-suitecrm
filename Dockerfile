@@ -18,10 +18,12 @@ RUN apt-get update && apt-get install -y \
         zlib1g-dev \
         libc-client-dev \
         libkrb5-dev \
+        libldap2-dev \
         cron
 RUN docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+    && docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ \
     && docker-php-ext-install -j$(nproc) pdo_mysql \
         curl \
         mbstring \
@@ -34,7 +36,8 @@ RUN docker-php-ext-install -j$(nproc) iconv mcrypt \
         fileinfo \
         soap \
         zip \
-        imap
+        imap \
+        ldap
 
 #Setting UP SuiteCRM
 RUN curl -O https://codeload.github.com/salesagility/SuiteCRM/tar.gz/v7.7.7 && tar xvfz v7.7.7 --strip 1 -C /var/www/html
