@@ -63,7 +63,7 @@ Best use this image with the official docker-mysql image. This has been tested a
 
 To persist your configuration the following files have to be mounted as Volume
 
-- /upload
-- /config.php
+- /localvoldir/upload:/var/www/html/upload
+- /localvoldir/conf.d:/var/www/html/conf.d
 
-`docker run -d -p 8020:80 --link mysqlserver --name suitecrmserver -v /opt/localpath/upload:/var/www/html/upload -v /opt/localpath/upload:/var/www/html/config.php suitecrm`
+`docker run -d -p 8020:80 --link mysqlserver --name suitecrmserver -v /opt/localpath/upload:/var/www/html/upload -v /opt/localpath/conf.d:/var/www/html/conf.d suitecrm`

@@ -1,10 +1,9 @@
-FROM php:5.6-apache
+FROM php:7-apache
 MAINTAINER Simon Hugentobler <simon.hugentobler@bertschi.com>
 
 
 
 COPY php.custom.ini /usr/local/etc/php/conf.d/
-COPY config.php /var/www/html/
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -28,7 +27,6 @@ RUN docker-php-ext-install -j$(nproc) iconv mcrypt \
         curl \
         mbstring \
         mysqli \
-        mysql \
         zip \
         ftp \
         pdo_pgsql \
@@ -40,14 +38,24 @@ RUN docker-php-ext-install -j$(nproc) iconv mcrypt \
         ldap
 
 #Setting UP SuiteCRM
-RUN curl -O https://codeload.github.com/salesagility/SuiteCRM/tar.gz/v7.7.7 && tar xvfz v7.7.7 --strip 1 -C /var/www/html
+RUN curl -O https://codeload.github.com/salesagility/SuiteCRM/tar.gz/v7.8.2 && tar xvfz v7.8.2 --strip 1 -C /var/www/html
 RUN chown www-data:www-data /var/www/html/ -R
 RUN cd /var/www/html && chmod -R 755 .
 RUN (crontab -l 2>/dev/null; echo "*    *    *    *    *     cd /var/www/html; php -f cron.php > /dev/null 2>&1 ") | crontab -
 
+#Setting Up config file redirect for proper use with docker volumes
+RUN cd /var/www/html \
+    && mkdir conf.d \
+    && mv config_override.php conf.d/ \
+    && touch /var/www/html/conf.d/config.php \
+    && ln -s /var/www/html/conf.d/config.php config.php \
+    && ln -s /var/www/html/conf.d/config_override.php config_override.php
+
+
 RUN apt-get clean
 
 VOLUME /var/www/html/upload
+VOLUME /var/www/html/conf.d
 
 WORKDIR /var/www/html
 EXPOSE 80
