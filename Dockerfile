@@ -51,6 +51,10 @@ RUN cd /var/www/html \
     && ln -s /var/www/html/conf.d/config.php config.php \
     && ln -s /var/www/html/conf.d/config_override.php config_override.php
 
+#Fix php warnings in dashboards
+RUN cd /var/www/html \
+    sed -i.back s/'<?php/<?php\n\nini_set\(display_errors\,0\)\;\nerror_reporting\(E_ALL\ \^\ E_STRICT\)\;\n\n/g' /var/www/html/modules/Calls/Dashlets/MyCallsDashlet/MyCallsDashlet.php
+
 
 RUN apt-get clean
 
