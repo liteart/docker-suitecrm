@@ -38,7 +38,7 @@ RUN docker-php-ext-install -j$(nproc) iconv mcrypt \
         ldap
 
 #Setting UP SuiteCRM
-RUN curl -O https://codeload.github.com/salesagility/SuiteCRM/tar.gz/v7.8.2 && tar xvfz v7.8.2 --strip 1 -C /var/www/html
+RUN curl -O https://codeload.github.com/salesagility/SuiteCRM/tar.gz/v7.9.4 && tar xvfz v7.9.4 --strip 1 -C /var/www/html
 RUN chown www-data:www-data /var/www/html/ -R
 RUN cd /var/www/html && chmod -R 755 .
 RUN (crontab -l 2>/dev/null; echo "*    *    *    *    *     cd /var/www/html; php -f cron.php > /dev/null 2>&1 ") | crontab -
