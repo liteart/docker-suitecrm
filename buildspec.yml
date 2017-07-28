@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - export VERSION=$(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'|sed -n 1p) 
+      - docker build -t 648548064017.dkr.ecr.us-east-1.amazonaws.com/transactrx/suitecrm:$VERSION .
+      - docker push 648548064017.dkr.ecr.us-east-1.amazonaws.com/transactrx/suitecrm:$VERSION
